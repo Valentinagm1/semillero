@@ -33,10 +33,10 @@ def form():
     fecha = date.today()
     ciudad = request.form.get('ciudad').upper()
     condi_solici = request.form.get('condi_solici')
-    id_solicitante = request.form.get('id_solicitante')
     direccion_solicitante = request.form.get('direccion_solicitante')
     email_solicitante = request.form.get('email_solicitante').lower()
     ced_solicitante = request.form.get('ced_solicitante')
+    id_solicitante = request.form.get('id_solicitante')
     num_solicitante =  request.form.get('num_solicitante')
     
     #gen_poder = datoshabeas.genero_dante.data
@@ -55,7 +55,7 @@ def form():
     cargo_txt = request.form.get('cargo_txt').capitalize()
     ced_afectado = request.form.get('ced_afectado')
     id_afectado = request.form.get('id_afectado')
-    
+
     num_dias = request.form.get('num_dias')
     gen_afectado = request.form.get('gen_afectado')
     gen_afectado = 'o' if gen_afectado == 'm' else 'a'
@@ -66,9 +66,8 @@ def form():
 
     texto = f"""
 <p style="text-align: justify;"><b><span>Señor</span><br><span>Juez competente</span></b><br>{ciudad}<br>
-<br>
 {fecha}
-<br>
+<br><br>
 Yo, {nom_solicitante} en mi condición de {condi_solici}, acudo ante usted, señor juez a fin de solicitarle se sirva dar trámite a la petición de hábeas corpus en favor de {nom_afectado},
 identificado con {id_afectado} No. {ced_afectado}, con fundamento en lo siguiente:</p>
 <br>
@@ -113,7 +112,7 @@ Teléfono: {num_solicitante}</p>
     pdf.output('habeas_'+nom_solicitante[:4]+ced_solicitante[:-3]+'.pdf', 'F')
 
 
-    return render_template("form.html", title = title, texto=texto, nom_solicitante = nom_solicitante, ciudad = ciudad, condi_solici = condi_solici, direccion_solicitante = direccion_solicitante , email_solicitante = email_solicitante, ced_solicitante = ced_solicitante, num_solicitante = num_solicitante, nom_afectado = nom_afectado, nom_autoridad = nom_autoridad, fecha_hechos = fecha_hechos, sujeto_ordeno = sujeto_ordeno, cargo_txt = cargo_txt, ced_afectado = ced_afectado, num_dias = num_dias, gen_afectado = gen_afectado, sitio = sitio , hechos = hechos)#, datoshabeas=datoshabeas.ciudad.data)
+    return render_template("form.html", id_solicitante=id_solicitante, id_afectado=id_afectado, fecha= fecha, title = title, texto=texto, nom_solicitante = nom_solicitante, ciudad = ciudad, condi_solici = condi_solici, direccion_solicitante = direccion_solicitante , email_solicitante = email_solicitante, ced_solicitante = ced_solicitante, num_solicitante = num_solicitante, nom_afectado = nom_afectado, nom_autoridad = nom_autoridad, fecha_hechos = fecha_hechos, sujeto_ordeno = sujeto_ordeno, cargo_txt = cargo_txt, ced_afectado = ced_afectado, num_dias = num_dias, gen_afectado = gen_afectado, sitio = sitio , hechos = hechos)#, datoshabeas=datoshabeas.ciudad.data)
 
 @app.route('/download/<pdf_name>')
 def download_file(pdf_name):
