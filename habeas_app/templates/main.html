@@ -44,7 +44,7 @@
 
       <form action="/form" name="datos" id="datos" method="POST" class="text" >
 
-          <label for="exampleInputEmail1">Datos solicitante</label><br/>
+          <label for="exampleInputEmail1"><strong>Datos solicitante</strong></label><br/>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe tus Nombres y Apellidos" name = 'nom_solicitante' required>
           <br>
           <input type="text" class="form-control" placeholder="Escribe la ciudad donde se realiza la detención" name = 'ciudad' required>
@@ -64,32 +64,28 @@
           <br/>
           <input type="email" class="form-control" placeholder="Escribe tu correo electrónico" name = email_solicitante required>
           <br/>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <select id="genstate" class="input-group-text" name = 'gen_afectado'>
-                  <option value='e' disabled selected hidden>Tipo de ID...</option>
-                  <option value='cc'>C.C.</option>
-                  <option value='ce'>C.E.</option>
-                  <option value='ti'>T.I.</option>
-              </select>
-
-
-              </div>
-
-            <input type="text" class="form-control" placeholder="Escribe el número de identificación">
-          </div>
-          <input type="text" class="form-control" placeholder="Escribe tu número de documento de identificación" name = 'ced_solicitante'>
-          <br/>
           <input type="text" class="form-control" placeholder="Escribe tu teléfono de contacto" name = num_solicitante>
           <br/>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <select id="genstate" class="form-control" name = 'id_solicitante'required>
+                  <option value=''>Tipo de ID...</option>
+                  <option value='C.C.'>C.C.</option>
+                  <option value='C.E.'>C.E.</option>
+                  <option value='T.I.'>T.I.</option>
+              </select>
+              </div>
+            <input type="text" class="form-control" placeholder="Escribe tu número de identificación " name = 'ced_solicitante'required>
+          </div>
+          <br/>
+          
+        
 
 
     </div>
     <div class="form-group col-sm">
-        <label for="afectado">Datos del afectado</label><br/>
-        <input type="text" class="form-control" id="afectado" aria-describedby="emailHelp" placeholder="Escribe los Nombres y Apellidos de la persona privada de la libertad" name = nom_afectado>
-        <br>
-        <input type="text" class="form-control" placeholder="Cuál es la cédula de la persona privada de la libertad" name = 'ced_afectado'>
+        <label for="afectado" ><strong>Datos del afectado</strong></label><br/>
+        <input type="text" class="form-control" id="afectado" aria-describedby="emailHelp" placeholder="Escribe los Nombres y Apellidos de la persona privada de la libertad" name = nom_afectado required>
         <br>
         <label for="genstate">¿Cuál es el sexo biológico de la persona privada de la libertad?</label><br/>
         <select id="genstate" class="form-control" name = 'gen_afectado'>
@@ -100,16 +96,27 @@
         <br>
         <label for="fecha_hechos">Selecciona la fecha de los hechos lo más acertado posible</label><br/>
         <input type="datetime-local" name='fecha_hechos' class="form-control">
-
+        <br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <select id="genstate" class="form-control" name = 'id_afectado'required>
+                  <option value=''>Tipo de ID...</option>
+                  <option value='Cédula de Ciudadanía'>C.C.</option>
+                  <option value='Cédula de Extranjería'>C.E.</option>
+                  <option value='Tarjeta de Identidad'>T.I.</option>
+              </select>
+              </div>
+            <input type="text" class="form-control" placeholder="Número de identificación del afectado" name = 'ced_afectado'required>
+          </div>
 
 
     </div>
     <div class="form-group col-sm">
-      <label for="autoridad">Hechos</label><br/>
-      <input type="text" class="form-control" id="autoridad" aria-describedby="emailHelp" placeholder="¿Cuál fue la autoridad que realizó la detención?" name = nom_autoridad >
+      <label for="autoridad"><strong>Hechos</strong></label><br/>
+      <input type="text" class="form-control" id="autoridad" aria-describedby="emailHelp" placeholder="¿Cuál fue la autoridad que realizó la detención?" name = nom_autoridad required>
       <br/>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cuantos días has estado retenido" name = num_dias><br/>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Dónde estás privado de tu libertad?" name = sitio><br/>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cuantos días has estado retenido" name = num_dias required><br/>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Dónde estás privado de tu libertad?" name = sitio><br/ required>
         <label for="retenedor">Opcional: si no sabes el nombre deja en blanco</label><br/>
         <input type="text" class="form-control" id="retenedor" aria-describedby="emailHelp" placeholder="Escribe el nombre de la persona que realizó la retención " name = sujeto_ordeno><br/>
         <label for="retenedor">Opcional: si no sabes el cargo deja en blanco</label><br/>
@@ -129,6 +136,14 @@
 
 
   </div>
+   <div class="form-check">
+        <input class="form-check-input " type="checkbox" value="" id="invalidCheck2" required>
+        <label class="form-check-label " for="invalidCheck2"><p style="text-align: justify;">
+          Bajo la gravedad del juramento, manifiesto que ningún otro funcionario conoce o ha decidido sobre un Habeas Corpus donde el afectado y los hechos sean los mismos.
+        </label>
+      </div>
+  <br/>
+  <img src="{{url_for('static', filename='linea.png')}}" class="img-fluid" alt="Responsive image">
   <div class="row">
     <div class="form-group col-sm">
       <div class="table-responsive">
@@ -140,7 +155,7 @@
              <tbody>
                <tr>
                     <td><button type="button" name="add" id="add" class="btn btn-success">Añadir hechos</button></td>
-                    <td>Nosotros redactamos los hechos por ti, pero con este botón puedes añadir hechos personalizados</td>
+                    <td><p style="text-align: justify;">Nosotros redactamos los hechos por ti, pero con este botón puedes añadir hechos adicionales personalizados</td>
                </tr>
              </tbody>
 
@@ -151,17 +166,12 @@
 
   </div>
   <div class="row">
-    <div class="form-group col-sm">
+    <div class="d-grid gap-3 col-2 mx-auto">
       <div class="form-group col-sm">
 
 
-        <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-        <label class="form-check-label" for="invalidCheck2">
-          Juro
-        </label>
-      </div>
-      <button class="btn btn-success">Crear Habeas Corpus</button>
+       
+      <button class="btn btn-success  ">Crear Habeas Corpus</button>
       </div>
   </div>
 <!-- Termina la row -->
@@ -185,7 +195,7 @@
       var i=1;
       $('#add').click(function(){
            i++;
-           $('#dynamic_field').append('<tr id="row'+i+'"><td><textarea name="hechos" form="datos" placeholder="Describe tu hecho personalizado" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><textarea name="hechos" form="datos" placeholder="Describe tus hechos adicionales personalizados" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
       });
       $(document).on('click', '.btn_remove', function(){
            var button_id = $(this).attr("id");
