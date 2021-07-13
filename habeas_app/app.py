@@ -162,7 +162,7 @@ def poder_automatizado():
         email_apo = 'Lorem ipmsum'
     elif email_apo == 'administrativo':
         email_apo='Lorem ipmsum'
-    elif email_apo = 'laboral':
+    elif email_apo == 'laboral':
         email_apo ='lorem ipsum'
     elif email_apo_otro:
         if email_apo != '':
