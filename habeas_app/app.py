@@ -108,7 +108,7 @@ def form():
     pdf = MyFPDF()
     pdf.set_margins(left= 15.0, top=12.5, right=15.0)
     pdf.add_page()
-    pdf.write_html(texto)
+    #pdf.write_html(texto)
     pdf.output('habeas_'+nom_solicitante[:4]+ced_solicitante[:-3]+'.pdf', 'F')
 
 
