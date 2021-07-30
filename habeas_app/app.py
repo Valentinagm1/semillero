@@ -165,8 +165,8 @@ def form_poder():
     print("Soy Email contra",request.form.get('email_contra'))
     if request.form.get('email_contra') != "":
         email_2 = request.form.get('email_contra').lower()
-        email_2 = email_req
-        email_2 = f'''Con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica &nbsp;{email_req}.'''
+        email_req = email_2
+        email_2 = f'''Con dirección de notificación electrónica: {email_req}.'''
     else:
         email_2 = ""
 
