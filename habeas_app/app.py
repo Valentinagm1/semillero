@@ -15,6 +15,10 @@ def about():
     names = ['Peter','Emma','Juan','Chipss']
     return render_template("about.html", names=names)
 
+@app.route('/about_poder')
+def about_poder():
+    return render_template("about_poder.html")
+
 @app.route('/', methods=['GET', 'POST'])  #ruta inicial y el metodo post es una forma de recibir la información
 def casa():
     #datoshabeas = formulario.Datos(request.form)
@@ -175,14 +179,14 @@ def form_poder():
 
     if email_apo == 'civil':
         email_apo = 'conjurcivil@uexternado.edu.co'
-    elif email_apo == 'comercial':
-        email_apo = 'Lorem ipmsum'
+    elif email_apo == 'economico':
+        email_apo = 'conjureconomico@uexternado.edu.co'
     elif email_apo == 'penal':
-        email_apo = 'Lorem ipmsum'
+        email_apo = 'conjurpenal@uexternado.edu.co'
     elif email_apo == 'publico':
         email_apo='conjurpublico@uexternado.edu.co'
     elif email_apo == 'laboral':
-        email_apo ='lorem ipsum'
+        email_apo ='conjurlaboral@uexternado.edu.co'
     elif email_apo_otro:
         if email_apo != None:
             email_apo= email_apo_otro
