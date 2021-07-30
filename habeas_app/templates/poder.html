@@ -11,7 +11,20 @@
       <h1 style="text-align: center;">Poder Automatizado</h1>
       <h2 style="text-align: center;">Llena todos los campos y al finalizar da clic en "Crear Poder"</h2>
     </div><br/><br/>
-    <div class="container"><!--ESTE ES LA PRIMERA COLUMNA DEL PODER-->
+    <div class="container">
+      <!--ESTE ES LA PRIMERA COLUMNA DEL PODER-->
+      <div class="row">
+            <!--  AQUÍ VA EL TIPO DE PROCESO   -->
+        <div class="form-group col-sm ">
+          <div class="p-1 bg-light border border-dark rounded">
+          <form action="/form_poder" name="datos" id="datos" method="POST" class="text " >
+              <p class="text-center"><label for="Tipo_proceso"><strong >¿Qué tipo de proceso es?</strong></label></p>
+              <input type="text" class="form-control border border-secondary " id="tipo_proceso" aria-describedby="text" placeholder="Escribe los Nombres y Apellido del poderdante" name = 'tipo_proceso' required>
+          </br>
+              </br>
+
+          </div></div>
+
       <div class="row">
         <!--===================================COLUMNA PODERDANTE===============================================================================================-->
         <div class="form-group col-sm "><div class="p-1 bg-light border border-dark rounded">
@@ -29,14 +42,14 @@
           </br>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <select id="genstate" class="form-control border-secondary" name = 'id_poder'required>
+                  <select id="genstate" class="form-control border-secondary" name = 'id_poder' required>
                       <option value='' disabled selected hidden>🔽 Tipo Id </option>
                       <option value='C.C.'>C.C.</option>
                       <option value='C.E.'>C.E.</option>
                       <option value='T.I.'>T.I.</option>
                   </select>
                   </div>
-                <input type="text" class="form-control border-secondary" placeholder="Escribe tu número de identificación " name = 'ced_solicitante'required>
+                <input type="text" class="form-control border-secondary" placeholder="Escribe tu número de identificación " name = 'ced_poder' required>
               </div>
               <br/>
                <br/>
@@ -48,7 +61,7 @@
               <p class="text-center"><label for="exampleInputEmail1"><strong >Apoderado</strong></label></p>
               <input type="text" class="form-control border border-secondary " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe los Nombres y Apellido del apoderado" name = 'nom_apo' required>
             </br>
-              <select id="genstate" class="form-control border-secondary " name = 'gen_poder'>
+              <select id="genstate" class="form-control border-secondary " name = 'gen_apo'>
                   <option value='e' disabled selected hidden> 🔽 ¿Cuál es el sexo biológico del apoderado? </option>
                   <option value='m'>Hombre</option>
                   <option value='f'>Mujer</option>
@@ -66,19 +79,19 @@
                       <option value='comercial'>Comercial</option>
                   </select>
                   </div>
-                <input type="text" class="form-control border-secondary" placeholder="otro(escríbelo)" name = 'email_apo_otro'required>
+                <input type="text" class="form-control border-secondary" placeholder="otro(escríbelo)" name = 'email_apo_otro' required>
               </div>
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <select id="genstate" class="form-control border-secondary" name = 'id_apo'required>
+              <select id="genstate" class="form-control border-secondary" name = 'id_apo' required>
                   <option value='' disabled selected hidden>🔽 Tipo Id </option>
                   <option value='C.C.'>C.C.</option>
                   <option value='C.E.'>C.E.</option>
                   <option value='T.I.'>T.I.</option>
               </select>
               </div>
-            <input type="text" class="form-control border-secondary" placeholder="Escribe el número de identificación  " name = 'ced_apo'required>
+            <input type="text" class="form-control border-secondary" placeholder="Escribe el número de identificación  " name = 'ced_apo' required>
           </div>
           <input type="text" class="form-control border border-secondary " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe el número del carnet de la sala" name = 'num_car'>
           <br/>
@@ -89,7 +102,7 @@
               <p class="text-center"><label for="exampleInputEmail1"><strong >Contraparte</strong></label></p>
               <input type="text" class="form-control border border-secondary " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe los Nombres y Apellido de la contraparte" name = 'nom_contra' required>
               <br>
-              <input type="email" class="form-control border border-secondary" placeholder="Escribe el correo electrónico (Opcional)" name = 'email_2'>
+              <input type="email" class="form-control border border-secondary" placeholder="Escribe el correo electrónico (Opcional)" name = 'email_contra'>
               <label for="genstate"></label><br/>
               <select id="genstate" class="form-control border-secondary " name = 'gen_contra'>
                   <option value='e' disabled selected hidden> 🔽 ¿Cuál es el sexo biológico de la contraparte?</option>
@@ -99,7 +112,7 @@
               <br/>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                  <select id="genstate" class="form-control border-secondary" name = 'id_contra'required>
+                  <select id="genstate" class="form-control border-secondary" name = 'id_contra' required>
                       <option value=''disabled selected hidden>🔽 Tipo Id</option>
                       <option value='C.C.'>C.C.</option>
                       <option value='C.E.'>C.E.</option>

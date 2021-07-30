@@ -126,34 +126,51 @@ def download_file(pdf_name):
 @app.route('/poder', methods=['GET', 'POST'])  #ruta inicial y el metodo post es una forma de recibir la información
 def poder():
     return render_template('poder.html')
+
+
+
+
 @app.route('/form_poder',methods=['POST'])
-def poder_automatizado():
+def form_poder():
     title = 'Poder Automatizado'
-    def info_poder(parte_procesal):
-        parte = parte_procesal
-        num_car = None
-        #---------------poderdante
-        nom_poder = request.form.get('nom_poder').upper()
-        email = request.form.get('email').lower()
-        gen_poder = request.form.get('gen_poder')
-        gen_poder = 'o' if gen_poder == 'm' else 'a'
-        ced_poder = request.form.get('ced_poder').replace('.','').replace(",","")
-        #----------------------------------------------------------------------------------------------
-        if parte_procesal == 'apoderado':
-                nom_apo = request.form.get('nom_apo'),upper()
-                num_car = request.form.get('num_car').replace('.','')
-                gen_apo = request.form.get('gen_apo')
-                gen_apo = 'o' if gen_poder == 'm' else 'a'
-                portadore = '' if gen_poder == 'm'else 'a'
-                email_apo = request.form.get('email_apo').lower()
+    tipo_proceso = request.form.get('tipo_proceso').upper()
+    num_car = None
+    #---------------PODERDANTE
+    nom_poder = request.form.get('nom_poder').upper()
+    print(nom_poder)
+    email = request.form.get('email').lower()
+    gen_poder = request.form.get('gen_poder')
+    gen_poder = 'o' if gen_poder == 'm' else 'a'
+    ced_poder = request.form.get('ced_poder').replace('.','').replace(",","")
+    id_poder = request.form.get('id_poder')
+    #---------------APODERADO---------------------------------------------
 
-        return nom_poder,gen_poder,ced_poder,num_car,gen_apo,email,email_apo,nom_apo
+    nom_apo = request.form.get('nom_apo').upper()
+    gen_apo = request.form.get('gen_apo')
+    gen_apo = 'o' if gen_apo == 'm' else 'a'
+    portadore = '' if gen_apo == '0' else 'a'
+    email_apo = request.form.get('email_apo').lower()
+    email_apo_otro = request.form.get('email_apo_otro').lower()
+    id_apo = request.form.get('id_apo')
+    ced_apo = request.form.get('ced_apo').replace('.','').replace(",","")
+    num_car = request.form.get('num_car').replace('.','')
+    #--------------CONTRAPARTE--------------------------------------------
 
-    #portadore = ''
+    nom_contra = request.form.get('nom_contra').upper()
+    gen_contra = request.form.get('gen_contra')
+    gen_contra = 'o' if gen_poder == 'm' else 'a'
+    id_contra = request.form.get('id_contra')
+    ced_contra = request.form.get('ced_contra').replace('.','').replace(",","")
 
-    nom_poder,gen_poder,ced_poder,_,_,email,_,_ = info_poder('poderdante')
-    nom_apo,gen_apo,ced_apo,gen_apo,num_car,_,email_apo,nom_apo = info_poder('apoderado')
-    nom_contra,gen_contra,ced_contra,_,_,email_2,_,_ = info_poder('contraparte')
+    print("Soy Email contra",request.form.get('email_contra'))
+    if request.form.get('email_contra') != "":
+        email_2 = request.form.get('email_contra').lower()
+    else:
+        email_2 = "Sin correo"
+
+
+
+
     if email_apo == 'civil':
         email_apo = 'conjurcivil@uexternado.edu.co'
     elif email_apo == 'comercial':
@@ -169,42 +186,81 @@ def poder_automatizado():
             email_apo= email_apo_otro
     #---------------------------TEXTO--------------------------------------------
 
-    poder =  f"""{nom_poder}, mayor de edad, domiciliad{gen_poder} en la ciudad de Bogotá D.C.,
-    identificad{gen_poder} con cédula de ciudadanía número {id_poder} {ced_poder}, y dirección de notificación electrónica {email},
-    por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a {nom_apo},
-    mayor de edad, domiciliad{gen_apo} en Bogotá D.C., identificad{gen_apo} con
-    Cédula de Ciudadanía No. {id_apo} {ced_apo}, miembro activo del Consultorio Jurídico de la
-    Universidad Externado de Colombia, portador{portadore} del carné No.{num_car} , con dirección de notificación electrónica {email_apo}.
-    Con la finalidad de que en mi nombre y representación, inicie y lleve
-    hasta su terminación el PROCESO DE SEPARACIÓN DE BIENES contra el señor {nom_contra} ,
-    mayor de edad, domiciliad{gen_contra} en Bogotá D.C.,
-    identificad{gen_contra} con cédula de ciudadanía número{id_contra} {ced_contra}, con dirección de notificación electrónica
-    {email_2}.
-    Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares,
-    desistir, renunciar, sustituir, recibir, transigir,
-    asumir el presente poder y demás facultades en los términos del artículo 77 del
-    Código General del Proceso.
+    # poder =  f"""{nom_poder}, mayor de edad, domiciliad{gen_poder} en la ciudad de Bogotá D.C.,
+    # identificad{gen_poder} con cédula de ciudadanía número {id_poder} {ced_poder}, y dirección de notificación electrónica {email},
+    # por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a {nom_apo},
+    # mayor de edad, domiciliad{gen_apo} en Bogotá D.C., identificad{gen_apo} con
+    # Cédula de Ciudadanía No. {id_apo} {ced_apo}, miembro activo del Consultorio Jurídico de la
+    # Universidad Externado de Colombia, portador{portadore} del carné No.{num_car} , con dirección de notificación electrónica {email_apo}.
+    # Con la finalidad de que en mi nombre y representación, inicie y lleve
+    # hasta su terminación el {tipo_proceso} contra el señor {nom_contra} ,
+    # mayor de edad, domiciliad{gen_contra} en Bogotá D.C.,
+    # identificad{gen_contra} con cédula de ciudadanía número{id_contra} {ced_contra}, con dirección de notificación electrónica
+    # {email_2}.
+    # Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares,
+    # desistir, renunciar, sustituir, recibir, transigir,
+    # asumir el presente poder y demás facultades en los términos del artículo 77 del
+    # Código General del Proceso.
+    #
+    # Sírvase, Señor Juez, reconocerle personería jurídica a mi apoderad{gen_apo}, en los términos y para los efectos del presente poder.
+    #
+    # Señor Juez,
+    #
+    # {nom_poder}
+    # {id_poder} No. {ced_poder}
+    #
+    #
+    # Acepto,
+    #
+    #
+    # {nom_apo}
+    # {id_apo} No. {ced_apo}
+    # Carné No.{num_car}  del Consultorio Jurídico.
+    # Universidad Externado de Colombia - Sala Civil.
+    #
+    # 
+    # """
+    poder = f"""
+    <p><span style="font-size: 17px;"><strong>Se&ntilde;or</strong></span></p>
+<p><span style="font-size: 17px;"><strong>JUEZ&nbsp;</strong></span></p>
+<p style="text-align: justify;"><strong>{nom_poder}</strong>, mayor de edad, domiciliad{gen_poder} en la ciudad de Bogot&aacute; D.C.,<br>&nbsp; &nbsp; identificad{gen_poder} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {id_poder} {ced_poder}, y direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email},<br>&nbsp; &nbsp; por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a <strong>{nom_apo}</strong>,<br>&nbsp; &nbsp; mayor de edad, domiciliad{gen_apo} en Bogot&aacute; D.C., identificad{gen_apo} con<br>&nbsp; &nbsp; C&eacute;dula de Ciudadan&iacute;a No. {id_apo} {ced_apo}, miembro activo del Consultorio Jur&iacute;dico de la<br>&nbsp; &nbsp; Universidad Externado de Colombia, portador{portadore} del carn&eacute; No.{num_car} , con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email_apo}.<br>&nbsp; &nbsp; Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve<br>&nbsp; &nbsp; hasta su terminaci&oacute;n el {tipo_proceso} contra el se&ntilde;or <strong>{nom_contra}</strong> ,<br>&nbsp; &nbsp; mayor de edad, domiciliad{gen_contra} en Bogot&aacute; D.C.,<br>&nbsp; &nbsp; identificad{gen_contra} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero{id_contra} {ced_contra}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica<br>&nbsp; &nbsp; {email_2}.<br>&nbsp; &nbsp; Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares,<br>&nbsp; &nbsp; desistir, renunciar, sustituir, recibir, transigir,<br>&nbsp; &nbsp; asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del<br>&nbsp; &nbsp; C&oacute;digo General del Proceso.<br><br>&nbsp; &nbsp; S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{gen_apo}, en los t&eacute;rminos y para los efectos del presente poder.<br><br>&nbsp; &nbsp; Se&ntilde;or Juez,<br><br> <strong>{nom_poder}</strong><br>&nbsp; &nbsp; {ced_poder} No. {ced_poder}<br><br><br>&nbsp; &nbsp; Acepto,<br><br><br> <strong>{nom_apo}</strong><br>&nbsp; &nbsp; {id_apo} No. {ced_apo}<br>&nbsp; &nbsp; Carn&eacute; No.{num_car} &nbsp;del Consultorio Jur&iacute;dico.<br> Universidad Externado de Colombia - Sala Civil.</p>
 
-    Sírvase, Señor Juez, reconocerle personería jurídica a mi apoderad{gen_apo}, en los términos y para los efectos del presente poder.
+    """
 
-    Señor Juez,
+    class MyFPDF(FPDF, HTMLMixin):
+        pass
 
-    {nom_poder}
-    {ced_poder} No. {ced_poder}
-
-
-    Acepto,
-
-
-    {nom_apo}
-    {id_apo} No. {ced_apo}
-    Carné No.{num_car}  del Consultorio Jurídico.
-    Universidad Externado de Colombia - Sala Civil.
+    pdf1 = MyFPDF()
+    pdf1.set_margins(left= 15.0, top=12.5, right=15.0)
+    pdf1.add_page()
+    pdf1.write_html(poder)
+    pdf1.output('poder_'+nom_apo[:4]+num_car[:-3]+'.pdf', 'F')
 
 
-     """
-    return  num_carced_poderrender_template("form_poder.html",nom_poder=nom_poder,gen_poder=gen_pode,email=email,nom_apo=nom_apo,gen_apo=gen_apo,ced_apo=ced_apo,
-    email_apo=email_apo,nom_contra=nom_contra,gen_contra=gen_contra,ced_contra=ced_contra,email_2=email_2)
+
+    return  render_template("form_poder.html",
+    nom_poder=nom_poder,
+    gen_poder=gen_poder,
+    id_poder = id_poder,
+    ced_poder = ced_poder,
+    email=email,
+    nom_apo=nom_apo,
+    gen_apo=gen_apo,
+    id_apo = id_apo ,
+    ced_apo=ced_apo,
+    portadore = portadore,
+    num_car = num_car,
+    email_apo=email_apo,
+    tipo_proceso = tipo_proceso,
+    nom_contra=nom_contra,
+    gen_contra=gen_contra,
+    id_contra = id_contra,
+    ced_contra=ced_contra,
+    email_2=email_2,
+
+
+
+    )
 
 
 

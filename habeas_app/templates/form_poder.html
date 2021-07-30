@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+
+{%extends 'layout.html'%} <!--Para los cambios en el nav bar y etc-->
+{%block content%}
+<body>
+<div class="container">
+  <h1>Gracias, este es el cuerpo del documento</h1>
+
+  <h2>Si todo está en orden, descarga <a href="{{url_for( 'download_file',pdf_name='poder_'+nom_apo[:4]+num_car[:-3]+'.pdf' ) }}">aquí</a> tu Poder en PDF</h2>
+  <h2>Descarga <a href="{{url_for( 'download_file',pdf_name='instructivo_habeas.pdf' ) }}">aquí</a> el instructivo para llevarlo a la justicia</h2>
+
+</div>
+<div class="container">
+  <p><span style="font-size: 17px;"><strong>Se&ntilde;or</strong></span></p>
+  <p><span style="font-size: 17px;"><strong>JUEZ&nbsp;</strong></span></p>
+  <p style="text-align: justify;"><strong>{{nom_poder}}</strong>, mayor de edad, domiciliad{{gen_poder}} en la ciudad de Bogot&aacute; D.C.,<br>&nbsp; &nbsp; identificad{{gen_poder}} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {{id_poder}} {{ced_poder}}, y direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {{email}},<br>&nbsp; &nbsp; por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a <strong>{{nom_apo}}</strong>,<br>&nbsp; &nbsp; mayor de edad, domiciliad{{gen_apo}} en Bogot&aacute; D.C., identificad{{gen_apo}} con<br>&nbsp; &nbsp; C&eacute;dula de Ciudadan&iacute;a No. {{id_apo}} {{ced_apo}}, miembro activo del Consultorio Jur&iacute;dico de la<br>&nbsp; &nbsp; Universidad Externado de Colombia, portador{{portadore}} del carn&eacute; No.{{num_car}} , con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {{email_apo}}.<br>&nbsp; &nbsp; Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve<br>&nbsp; &nbsp; hasta su terminaci&oacute;n el {{tipo_proceso}} contra el se&ntilde;or <strong>{{nom_contra}}</strong> ,<br>&nbsp; &nbsp; mayor de edad, domiciliad{{gen_contra}} en Bogot&aacute; D.C.,<br>&nbsp; &nbsp; identificad{{gen_contra}} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero{{id_contra}} {{ced_contra}}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica<br>&nbsp; &nbsp; {{email_2}}.<br>&nbsp; &nbsp; Mi apoderad{{gen_apo}} queda facultad{{gen_apo}} para solicitar medidas cautelares,<br>&nbsp; &nbsp; desistir, renunciar, sustituir, recibir, transigir,<br>&nbsp; &nbsp; asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del<br>&nbsp; &nbsp; C&oacute;digo General del Proceso.<br><br>&nbsp; &nbsp; S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{{gen_apo}}, en los t&eacute;rminos y para los efectos del presente poder.<br><br>&nbsp; &nbsp; Se&ntilde;or Juez,<br><br> <strong>{{nom_poder}}</strong><br>&nbsp; &nbsp; {{ced_poder}} No. {{ced_poder}}<br><br><br>&nbsp; &nbsp; Acepto,<br><br><br> <strong>{{nom_apo}}</strong><br>&nbsp; &nbsp; {{id_apo}} No. {{ced_apo}}<br>&nbsp; &nbsp; Carn&eacute; No.{{num_car}} &nbsp;del Consultorio Jur&iacute;dico.<br> Universidad Externado de Colombia - Sala Civil.</p>
+</div>
+</body>
+{%endblock%}
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
