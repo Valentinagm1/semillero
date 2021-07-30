@@ -148,7 +148,7 @@ def form_poder():
     nom_apo = request.form.get('nom_apo').upper()
     gen_apo = request.form.get('gen_apo')
     gen_apo = 'o' if gen_apo == 'm' else 'a'
-    portadore = '' if gen_apo == '0' else 'a'
+    portadore = '' if gen_apo == 'o' else 'a'
     email_apo = request.form.get('email_apo').lower()
     email_apo_otro = request.form.get('email_apo_otro').lower()
     id_apo = request.form.get('id_apo')
@@ -165,8 +165,10 @@ def form_poder():
     print("Soy Email contra",request.form.get('email_contra'))
     if request.form.get('email_contra') != "":
         email_2 = request.form.get('email_contra').lower()
+        email_2 = email_req
+        email_2 = f'''Con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica &nbsp;{email_req}.'''
     else:
-        email_2 = "Sin correo"
+        email_2 = ""
 
 
 
@@ -177,12 +179,12 @@ def form_poder():
         email_apo = 'Lorem ipmsum'
     elif email_apo == 'penal':
         email_apo = 'Lorem ipmsum'
-    elif email_apo == 'administrativo':
-        email_apo='Lorem ipmsum'
+    elif email_apo == 'publico':
+        email_apo='conjurpublico@uexternado.edu.co'
     elif email_apo == 'laboral':
         email_apo ='lorem ipsum'
     elif email_apo_otro:
-        if email_apo != '':
+        if email_apo != None:
             email_apo= email_apo_otro
     #---------------------------TEXTO--------------------------------------------
 
@@ -224,21 +226,21 @@ def form_poder():
     <p><strong>Se&ntilde;or, </strong></p>
     <p style="text-align: justify;"><strong>Juez</strong></p>
     <p style="text-align: justify;"><strong>E.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D.</strong></p>
-    <p style="text-align: right; padding-left: 480px;"><strong>REFERENCIA: </strong>{{tipo_proceso}} de</p>
-    <p style="text-align: right; padding-left: 480px;"><strong>{{nom_poder}}</strong> contra <strong>{{nom_contra}}</strong></p>
+    <p style="text-align: right; padding-left: 480px;"><strong>REFERENCIA: </strong>{tipo_proceso} de</p>
+    <p style="text-align: right; padding-left: 480px;"><strong>{nom_poder}</strong> contra <strong>{nom_contra}</strong></p>
     <br><br>
-    <p style="text-align: justify;"><strong>{{nom_poder}}</strong>, mayor de edad, domiciliad{{gen_poder}} en la ciudad de Bogot&aacute; D.C., identificad{{gen_poder}} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {{id_poder}} {{ced_poder}}, y direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {{email}}, por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a <strong>{{nom_apo}}</strong>, mayor de edad, domiciliad{{gen_apo}} en Bogot&aacute; D.C., identificad{{gen_apo}} con C&eacute;dula de Ciudadan&iacute;a No. {{id_apo}} {{ced_apo}}, miembro activo del Consultorio Jur&iacute;dico de la Universidad Externado de Colombia, portador{{portadore}} del carn&eacute; No. {{num_car}}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {{email_apo}}. Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve hasta su terminaci&oacute;n el {{tipo_proceso}} contra el se&ntilde;or <strong>{{nom_contra}}</strong>, mayor de edad, domiciliad{{gen_contra}} en Bogot&aacute; D.C., identificad{{gen_contra}} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {{id_contra}} {{ced_contra}}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica &nbsp;{{email_2}}.</p>
-    <p style="text-align: justify;">Mi apoderad{{gen_apo}} queda facultad{{gen_apo}} para solicitar medidas cautelares, desistir, renunciar, sustituir, recibir, transigir, asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del C&oacute;digo General del Proceso.</p>
-    <p>S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{{gen_apo}}, en los t&eacute;rminos y para los efectos del presente poder.</p>
+    <p style="text-align: justify;"><strong>{nom_poder}</strong>, mayor de edad, domiciliad{gen_poder} en la ciudad de Bogot&aacute; D.C., identificad{gen_poder} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {id_poder} {ced_poder}, y direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email}, por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a <strong>{nom_apo}</strong>, mayor de edad, domiciliad{gen_apo} en Bogot&aacute; D.C., identificad{gen_apo} con C&eacute;dula de Ciudadan&iacute;a No. {id_apo} {ced_apo}, miembro activo del Consultorio Jur&iacute;dico de la Universidad Externado de Colombia, portador{portadore} del carn&eacute; No. {num_car}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email_apo}. Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve hasta su terminaci&oacute;n el {tipo_proceso} contra el se&ntilde;or <strong>{nom_contra}</strong>, mayor de edad, domiciliad{gen_contra} en Bogot&aacute; D.C., identificad{gen_contra} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {id_contra} {ced_contra}. {email_2}</p>
+    <p style="text-align: justify;">Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares, desistir, renunciar, sustituir, recibir, transigir, asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del C&oacute;digo General del Proceso.</p>
+    <p>S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{gen_apo}, en los t&eacute;rminos y para los efectos del presente poder.</p>
     <p>&nbsp;Se&ntilde;or Juez,</p>
-    <p><strong>{{nom_poder}}</strong></p>
-    <p>{{id_poder}} No. {{ced_poder}}</p>
+    <p><strong>{nom_poder}</strong></p>
+    <p>{id_poder} No. {ced_poder}</p>
     <br>
     <p>Acepto,</p>
-    <p><strong>{{nom_apo}}</strong></p>
-    <p>{{id_apo}} No. {{ced_apo}}</p>
-    <p>Carn&eacute; Consultorio : {{num_car}}</p>
-    <p>Direcci&oacute;n de notificaci&oacute;n electr&oacute;nica: {{email_apo}}</p>"""
+    <p><strong>{nom_apo}</strong></p>
+    <p>{id_apo} No. {ced_apo}</p>
+    <p>Carn&eacute; Consultorio : {num_car}</p>
+    <p>Direcci&oacute;n de notificaci&oacute;n electr&oacute;nica: {email_apo}</p>"""
 
     class MyFPDF(FPDF, HTMLMixin):
         pass
@@ -246,7 +248,7 @@ def form_poder():
     pdf1 = MyFPDF()
     pdf1.set_margins(left= 15.0, top=12.5, right=15.0)
     pdf1.add_page()
-    pdf1.write_html(poder)
+    #pdf1.write_html(poder)
     pdf1.output('poder_'+nom_apo[:4]+num_car[:-3]+'.pdf', 'F')
 
 
