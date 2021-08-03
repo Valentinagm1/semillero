@@ -19,6 +19,9 @@ def about():
 def about_poder():
     return render_template("about_poder.html")
 
+@app.route('/inicio')
+def inicio():
+    return render_template("inicio.html")
 @app.route('/', methods=['GET', 'POST'])  #ruta inicial y el metodo post es una forma de recibir la información
 def casa():
     #datoshabeas = formulario.Datos(request.form)
@@ -173,7 +176,6 @@ def form_poder():
         email_2 = f'''Con dirección de notificación electrónica: {email_req}.'''
     else:
         email_2 = ""
-
 
 
 
