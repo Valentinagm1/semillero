@@ -66,7 +66,7 @@ blockquote.bq{
 	font-style: italic;
 	font-size: 14px;
 	line-height: 30px;
-	color:#999999;
+	color:#828282;
 	background-color: #efeff0;
 }
 
@@ -102,13 +102,13 @@ a:hover:after{
 .open-sans-text{font-family: "Open sans", sans-serif}
 .white-text{color:white;}
 .green-text{color:#5EAB87;}
-.gray-text{color:#999999;}
+.gray-text{color:#828282;}
 
 .uppercase{text-transform: uppercase;}
 .italic{font-style: italic;}
 p{
 	font-family: "Open sans", sans-serif;
-	color:#999999;
+	color:#828282;
 	line-height: 30px;
 }
 ul.social-icons li a:hover{
@@ -208,7 +208,7 @@ ul.tags li a{
 	display: inline-block;
 	height: 30px;
 	line-height: 30px;
-	color:#999999;
+	color:#828282;
 	background-color: #e5e5e5;
 	padding: 0 15px;
 	font-family: "Montserrat", sans-serif;
@@ -230,7 +230,7 @@ ul.social-icons li{
 ul.social-icons li:first-child{margin:0 10px 0 0;}
 ul.social-icons li:last-child{margin:0 0 0 10px;}
 ul.social-icons li a{
-	color:#999999;
+	color:#828282;
 	font-size: 18px;
 }
 
@@ -298,7 +298,7 @@ ul.social-icons li a{
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 0 10px 20px;
-	color:#999999;
+	color:#828282;
 	display: inline-block;
 	-webkit-transition:all .2s ease-in-out;
 			transition:all .2s ease-in-out;
