@@ -116,7 +116,7 @@ def form():
     pdf = MyFPDF()
     pdf.set_margins(left= 15.0, top=12.5, right=15.0)
     pdf.add_page()
-    #pdf.write_html(texto)
+    pdf.write_html(texto)
     pdf.output('habeas_'+nom_solicitante[:4]+ced_solicitante[:-3]+'.pdf', 'F')
 
 
@@ -230,32 +230,63 @@ def form_poder():
     #
     # """
     poder = f"""
-    <p><strong>Se&ntilde;or, </strong></p>
-    <p style="text-align: justify;"><strong>Juez</strong></p>
-    <p style="text-align: justify;"><strong>E.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D.</strong></p>
-    <p style="text-align: right; padding-left: 480px;"><strong>REFERENCIA: </strong>{tipo_proceso} de</p>
-    <p style="text-align: right; padding-left: 480px;"><strong>{nom_poder}</strong> contra <strong>{nom_contra}</strong></p>
-    <br><br>
-    <p style="text-align: justify;"><strong>{nom_poder}</strong>, mayor de edad, domiciliad{gen_poder} en la ciudad de Bogot&aacute; D.C., identificad{gen_poder} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {id_poder} {ced_poder}, y direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email}, por medio del presente escrito, otorgo PODER ESPECIAL, AMPLIO Y SUFICIENTE a <strong>{nom_apo}</strong>, mayor de edad, domiciliad{gen_apo} en Bogot&aacute; D.C., identificad{gen_apo} con C&eacute;dula de Ciudadan&iacute;a No. {id_apo} {ced_apo}, miembro activo del Consultorio Jur&iacute;dico de la Universidad Externado de Colombia, portador{portadore} del carn&eacute; No. {num_car}, con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email_apo}. Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve hasta su terminaci&oacute;n el {tipo_proceso} contra el se&ntilde;or <strong>{nom_contra}</strong>, mayor de edad, domiciliad{gen_contra} en Bogot&aacute; D.C., identificad{gen_contra} con c&eacute;dula de ciudadan&iacute;a n&uacute;mero {id_contra} {ced_contra}. {email_2}</p>
-    <p style="text-align: justify;">Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares, desistir, renunciar, sustituir, recibir, transigir, asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del C&oacute;digo General del Proceso.</p>
-    <p>S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{gen_apo}, en los t&eacute;rminos y para los efectos del presente poder.</p>
-    <p>&nbsp;Se&ntilde;or Juez,</p>
-    <p><strong>{nom_poder}</strong></p>
-    <p>{id_poder} No. {ced_poder}</p>
-    <br>
-    <p>Acepto,</p>
-    <p><strong>{nom_apo}</strong></p>
-    <p>{id_apo} No. {ced_apo}</p>
-    <p>Carn&eacute; Consultorio : {num_car}</p>
-    <p>Direcci&oacute;n de notificaci&oacute;n electr&oacute;nica: {email_apo}</p>"""
+<p><b>Se&ntilde;or, </b></p>
+<p ><b>Juez</b></p>
+<p ><b>E.&nbsp;&nbsp;&nbsp; S.&nbsp;&nbsp;&nbsp; D.</b></p>
+<br>
+<br>
+<br>
+<br>
+<p><b>REFERENCIA: </b>{tipo_proceso} de</p>
+<p><b>{nom_poder}</b> contra <b>{nom_contra}</b></p>
+<br><br><br><br><br>
+<p><b>{nom_poder}</b>, mayor de edad, domiciliad{gen_poder} en la ciudad de
+Bogot&aacute; D.C., identificad{gen_poder} con {id_poder} No. {ced_poder}, y direcci&oacute;n de notificaci&oacute;n
+ electr&oacute;nica {email}, por medio del presente escrito, otorgo PODER
+ ESPECIAL, AMPLIO Y SUFICIENTE a <b>{nom_apo}</b>, mayor de edad,
+ domiciliad{gen_apo} en Bogot&aacute; D.C., identificad{gen_apo} con {id_apo}
+ No. {ced_apo}, miembro activo del Consultorio Jur&iacute;dico de la Universidad
+ Externado de Colombia, portador{portadore} del carn&eacute; No. {num_car},
+ con direcci&oacute;n de notificaci&oacute;n electr&oacute;nica {email_apo}.
+ Con la finalidad de que en mi nombre y representaci&oacute;n, inicie y lleve
+ hasta su terminaci&oacute;n el {tipo_proceso} contra <b>{nom_contra}</b>,
+ mayor de edad, domiciliad{gen_contra} en Bogot&aacute; D.C.,
+ identificad{gen_contra} con {id_contra} No. {ced_contra}.
+ {email_2}</p>
+<br>
+<p>Mi apoderad{gen_apo} queda facultad{gen_apo} para solicitar medidas cautelares, desistir, renunciar, sustituir, recibir, transigir, asumir el presente poder y dem&aacute;s facultades en los t&eacute;rminos del art&iacute;culo 77 del C&oacute;digo General del Proceso.</p>
+<br>
+<br>
+<p>S&iacute;rvase, Se&ntilde;or Juez, reconocerle personer&iacute;a jur&iacute;dica a mi apoderad{gen_apo}, en los t&eacute;rminos y para los efectos del presente poder.</p>
+<br>
+<p>Del Se&ntilde;or Juez,</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p><b>{nom_poder}</b></p>
+<p>{id_poder} No. {ced_poder}</p>
+<br>
+<p>Acepto,</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p><b>{nom_apo}</b></p>
+<p>{id_apo} No. {ced_apo}</p>
+<p>Carn&eacute; Consultorio : {num_car}</p>
+<p>Direcci&oacute;n de notificaci&oacute;n electr&oacute;nica: {email_apo}</p>"""
 
     class MyFPDF(FPDF, HTMLMixin):
         pass
 
     pdf1 = MyFPDF()
     pdf1.set_margins(left= 15.0, top=12.5, right=15.0)
+    pdf1.set_font('helvetica', 'B', 14)
     pdf1.add_page()
-    #pdf1.write_html(poder)
+    pdf1.write_html(poder.replace("\n",""))
     pdf1.output('poder_'+nom_apo[:4]+num_car[:-3]+'.pdf', 'F')
 
 

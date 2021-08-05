@@ -44,6 +44,34 @@ body{
     overflow-x: hidden;
 }
 
+.dropdown-toggle::after {
+    display: inline-block !important;
+    /* position: absolute; */
+    margin-left: .255em !important;
+    vertical-align: .255em !important;
+    content: "";
+    border-top: .3em solid !important;
+    border-right: .3em solid transparent !important;
+    border-bottom: 0 !important;
+    border-left: .3em solid transparent !important;
+    content: "" !important;
+    position: absolute !important;
+    top: 40px !important;
+    left: 5px !important;
+    /* width: 50%; */
+    /* height: 1px; */
+    /* background-color: #60606e; */
+    /* opacity: 0; */
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 1px solid transparent;
+}
 /* ##### 00 : GENERAL  ##### */
 section{
 	margin-top: 150px;
@@ -718,7 +746,7 @@ footer.main-footer nav.footer-nav ul li a{
 .team_member .team_member_hover .team_member_info .team_member_name{
 	font-family: "Montserrat", sans-serif;
 	font-weight: 700;
-	font-size: 12px;
+	font-size: 15px;
 	color:#60606e;
 	text-transform: uppercase;
 	-webkit-transition:all .2s ease-in-out .2s;
@@ -745,10 +773,28 @@ footer.main-footer nav.footer-nav ul li a{
 	        transform:translateY(20px);
 	opacity: 0;
 }
+.team_member .team_member_hover .team_member_info .team_member_des{
+	font-family: "Montserrat", sans-serif;
+	font-weight: 500;
+	margin: 20px;
+	font-size: 15px;
+	text-align: center;
+	color:#60606e;
+	/* text-transform: uppercase; */
+	-webkit-transition:all .2s ease-in-out .2s;
+	transition:all .2s ease-in-out .2s;
+	-webkit-transform:translateY(20px);
+	    -ms-transform:translateY(20px);
+	        transform:translateY(20px);
+	opacity: 0;
+}
+
 .team_member:hover .team_member_hover{
 	opacity: 1;
 }
-.team_member:hover .team_member_info .team_member_name,.team_member:hover .team_member_info .team_member_job{
+.team_member:hover .team_member_info .team_member_name,
+.team_member:hover .team_member_info .team_member_job,
+.team_member:hover .team_member_info .team_member_des{
 	-webkit-transform:translateY(0);
 	    -ms-transform:translateY(0);
 	        transform:translateY(0);
